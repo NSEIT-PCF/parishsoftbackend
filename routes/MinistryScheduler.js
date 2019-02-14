@@ -18,7 +18,7 @@ ministrySchedulerRouter.route('/MinistryScheduler/MinistryRecords').get(function
     }).then(function (response) {
         res.send(response.data);
     }).catch(function (error) {
-        console.log('error-------------', error);
+        //console.log('error-------------', error);
         res.send(error);
     });
 })

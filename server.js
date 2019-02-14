@@ -4,6 +4,7 @@ const organizationRouter  = require('./routes/OrganizationRoutes');
 const familiesRouter  = require('./routes/Families');
 const membersRouter  = require('./routes/Members');
 const ministrySchedulerRouter  = require('./routes/MinistryScheduler');
+const rdRouter  = require('./routes/ReligiousEducation');
 const authenticateToken  = require('./routes/Authenticat');
 const cors = require('cors');
 const app = express();
@@ -29,4 +30,7 @@ app.use('/Organizations', organizationRouter);
 app.use('/Families', familiesRouter);
 app.use('/Members', membersRouter);
 app.use('/MinistryScheduler', ministrySchedulerRouter);
+app.use('/ReligiousEducation/Classes', rdRouter);
+app.use('ReligiousEducation/MemberAttendanceSummary', rdRouter);
+
 
