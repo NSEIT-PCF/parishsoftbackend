@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const bodyParser = require('body-parser');
 const organizationRouter  = require('./routes/OrganizationRoutes');
 const familiesRouter  = require('./routes/Families');
@@ -28,7 +29,39 @@ app.get('/', function (req, res) {
 app.use('/Token/Authenticate', authenticateToken);
 app.use('/Organizations', organizationRouter);
 app.use('/Families', familiesRouter);
+app.get('/Families/:familyDUID', (req, res) => {
+    console.log(' req.params.memberDUID------------------', req.params.familyDUID);
+    axios({
+        method: 'get',
+        url: 'http://parishsoftcustomerapi.azurewebsites.net/api/Families/' + req.params.familyDUID,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': req.headers.authorization
+        },
+        responseType: 'application/json'
+    }).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+});
 app.use('/Members', membersRouter);
+app.get('/Members/:memberDUID', (req, res) => {
+    console.log(' req.params.memberDUID------------------', req.params.memberDUID);
+    axios({
+        method: 'get',
+        url: 'http://parishsoftcustomerapi.azurewebsites.net/api/Members/' + req.params.memberDUID,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': req.headers.authorization
+        },
+        responseType: 'application/json'
+    }).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+});
 app.use('/MinistryScheduler', ministrySchedulerRouter);
 app.use('/ReligiousEducation/Classes', rdRouter);
 app.use('ReligiousEducation/MemberAttendanceSummary', rdRouter);
