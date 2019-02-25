@@ -81,7 +81,7 @@ app.get('/Families/groups', (req, res) => {
 app.get('/Families/workgroups', (req, res) => {
     axios({
         method: 'get',
-        url: ' http://parishsoftcustomerapi.azurewebsites.net/api/Families/workgroups',
+        url: ' http://parishsoftcustomerapi.azurewebsites.net/api/Families/groups',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': req.headers.authorization
@@ -99,6 +99,23 @@ app.get('/Members/:memberDUID', (req, res) => {
     axios({
         method: 'get',
         url: 'http://parishsoftcustomerapi.azurewebsites.net/api/Members/' + req.params.memberDUID,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': req.headers.authorization
+        },
+        responseType: 'application/json'
+    }).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+});
+
+app.get('/Members/:memberDUID/workgroups', (req, res) => {
+    console.log(' req.params.memberDUID------------------', req.params.memberDUID);
+    axios({
+        method: 'get',
+        url: 'http://parishsoftcustomerapi.azurewebsites.net/api/Members/' + req.params.memberDUID + '/workgroups',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': req.headers.authorization
