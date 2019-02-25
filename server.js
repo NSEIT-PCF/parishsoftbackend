@@ -45,6 +45,54 @@ app.get('/Families/:familyDUID', (req, res) => {
         res.send(error);
     });
 });
+
+app.get('/Families/:familyDUID/members', (req, res) => {
+    console.log(' req.params.memberDUID------------------/Families/:familyDUID/members ', req.params.familyDUID);
+    axios({
+        method: 'get',
+        url: ' http://parishsoftcustomerapi.azurewebsites.net/api/Families/'+ req.params.familyDUID + '/members',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': req.headers.authorization
+        },
+        responseType: 'application/json'
+    }).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+});
+
+app.get('/Families/groups', (req, res) => {
+    axios({
+        method: 'get',
+        url: ' http://parishsoftcustomerapi.azurewebsites.net/api/Families/groups',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': req.headers.authorization
+        },
+        responseType: 'application/json'
+    }).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+});
+app.get('/Families/workgroups', (req, res) => {
+    axios({
+        method: 'get',
+        url: ' http://parishsoftcustomerapi.azurewebsites.net/api/Families/workgroups',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': req.headers.authorization
+        },
+        responseType: 'application/json'
+    }).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+});
 app.use('/Members', membersRouter);
 app.get('/Members/:memberDUID', (req, res) => {
     console.log(' req.params.memberDUID------------------', req.params.memberDUID);
