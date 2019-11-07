@@ -1,0 +1,4 @@
+---
+applications:
+- name: parishsoftbackend
+  command: node parishsoftbackend.js
