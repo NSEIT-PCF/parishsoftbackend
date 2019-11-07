@@ -8,8 +8,8 @@
     "start": "nodemon server.js"
   },
   "engines": {
-    "node": "0.12.7",
-    "npm": "2.7.4"
+    "node": "10.17.0",
+    "npm": "6.9.0"
   },
   "author": "Mission PathWays",
   "license": "ISC",
