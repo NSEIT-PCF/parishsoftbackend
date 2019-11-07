@@ -19,7 +19,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.options('*', cors());
 app.use(cors());
-app.listen(3000, () => {
+app.listen(8080, () => {
     console.log('App Successful listening on port 3000');
 });
 app.get('/', function (req, res) {
