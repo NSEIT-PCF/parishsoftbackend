@@ -1,4 +1,4 @@
 ---
 applications:
 - name: parishsoftbackend
-  command: node parishsoftbackend.js
+  command: npm start
